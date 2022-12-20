@@ -20,4 +20,4 @@ The following libraries were used in this project:
 
 ### Disclaimer
 
-This README file is everything but finished. Stay tuned for future updates!
+This README file is anything but finished. Stay tuned for future updates!
