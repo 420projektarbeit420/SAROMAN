@@ -73,7 +73,7 @@ while True:
             continue    # jump to the next while-loop iteration
 
         try:
-            # draw with color or in b/w
+            # draw with color gradient (t) or with user selected color (f)
             check_colors = gui_values["CHECK-COLORS"]
             # generate satellite position data; additionally generates a list of colors for the plot
             list_lat, list_lon, list_segColors, list_height, list_times = __FUNCTIONS.GenerateGeodetics(check_colors=check_colors)
@@ -124,7 +124,8 @@ while True:
     elif gui_event == "BTN-COLOR":
         # open color chooser and write to input variables
         inputColor, hex = ColorChooser(color="#000000")
-        __INPUTS.PLOT_COLOR = (inputColor[0]/255, inputColor[1]/255, inputColor[2]/255)
-        window["TEXT-COLOR"].update(hex)
+        if hex != None:
+            __INPUTS.PLOT_COLOR = (inputColor[0]/255, inputColor[1]/255, inputColor[2]/255)
+            window["TEXT-COLOR"].update(hex)
 
 window.close()

@@ -31,12 +31,12 @@ def GenerateGeodetics(check_colors):
 
         teme = Get_TEME(time=t)
         itrs = TEME_to_ITRS(time=t, teme=teme)
-        itrs_lat, itrs_lon, itrs_height = ITRS_to_GEODETIC(itrs)
+        gcs_lat, gcs_lon, gcs_height = ITRS_to_GEODETIC(itrs)
 
         list_teme.append(teme)
-        list_lat.append(itrs_lat)
-        list_lon.append(itrs_lon)
-        list_height.append(itrs_height)
+        list_lat.append(gcs_lat)
+        list_lon.append(gcs_lon)
+        list_height.append(gcs_height)
         list_times.append(calc_time)
 
     list_segColors = Calc_Colors(list_teme=list_teme, check_colors=check_colors)
@@ -84,7 +84,7 @@ def ITRS_to_GEODETIC(itrs):
 # calculate distances between points and generate rgb color values
 def Calc_Colors(list_teme, check_colors):
     list_pointDist: list[float] = []
-    list_segColors: list[(float, float, float, float)] = []
+    list_segColors: list[(float, float, float)] = []
 
     for i in range(len(list_teme) - 1):
         list_pointDist.append(float(numpy.sqrt(numpy.power(list_teme[i + 1].x.value - list_teme[i].x.value, 2) + numpy.power(list_teme[i + 1].y.value - list_teme[i].y.value, 2) + numpy.power(list_teme[i + 1].z.value - list_teme[i].z.value, 2))))
