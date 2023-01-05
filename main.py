@@ -22,7 +22,7 @@ import settings as __SETTINGS
 img = plt.imread(__SETTINGS.PATH_MAP)
 p, (ax_Map, ax_Height) = plt.subplots(2, figsize=(__SETTINGS.PLOT_ONSCREEN_WIDTH, __SETTINGS.PLOT_ONSCREEN_HEIGHT), gridspec_kw={'height_ratios': [2, 1]})
 ax_Map.imshow(img, extent=[-180, 180, -90, 90])
-plt.setp(ax_Map, xticks=numpy.arange(start=-180, stop=181, step=30), yticks=numpy.arange(start=-90, stop=91, step=15), xlabel="latitude [deg]", ylabel="longitude [deg]")
+plt.setp(ax_Map, xticks=numpy.arange(start=-180, stop=181, step=30), yticks=numpy.arange(start=-90, stop=91, step=15), xlabel="longitude [deg]", ylabel="latitude [deg]")
 plt.setp(ax_Height, xlabel="time [min]", ylabel="altitude [km]")
 
 # gui
@@ -89,7 +89,7 @@ while True:
             # split up the position data and draw the data onto the map
             draw_arrows = gui_values["CHECK-ARROW"]
             __FUNCTIONS.Split_and_Draw(list_lat=list_lat, list_lon=list_lon, ax=ax_Map, list_segColors=list_segColors, draw_arrows=draw_arrows)
-            plt.setp(ax_Map, xticks=numpy.arange(start=-180, stop=181, step=30), yticks=numpy.arange(start=-90, stop=91, step=15), xlabel="latitude [deg]", ylabel="longitude [deg]")
+            plt.setp(ax_Map, xticks=numpy.arange(start=-180, stop=181, step=30), yticks=numpy.arange(start=-90, stop=91, step=15), xlabel="longitude [deg]", ylabel="latitude [deg]")
             # format and plot height data
             min_time, max_time, time_stepsize, xlabels = __FUNCTIONS.draw_Height_Map(list_height=list_height, list_times=list_times, list_segColors=list_segColors, ax_Height=ax_Height, complete_time_list=complete_time_list)
             plt.setp(ax_Height, xticks=numpy.arange(start=min_time, stop=max_time, step=time_stepsize), xticklabels=xlabels, xlabel="time [min]", ylabel="altitude [km]")
@@ -107,7 +107,7 @@ while True:
         ax_Map.cla()
         ax_Height.cla()
         ax_Map.imshow(img, extent=[-180, 180, -90, 90])
-        plt.setp(ax_Map, xticks=numpy.arange(start=-180, stop=181, step=30), yticks=numpy.arange(start=-90, stop=91, step=15), xlabel="latitude [deg]", ylabel="longitude [deg]")
+        plt.setp(ax_Map, xticks=numpy.arange(start=-180, stop=181, step=30), yticks=numpy.arange(start=-90, stop=91, step=15), xlabel="longitude [deg]", ylabel="latitude [deg]")
         plt.setp(ax_Height, xlabel="time [min]", ylabel="altitude [km]")
         plt.title(label="")
         gui_plot.draw()
